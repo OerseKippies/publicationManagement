@@ -1,15 +1,18 @@
-# Active Work
+# pubM Active Work
 
 ## Current Phase
 
-Repository alignment with OK-Core.
+Architecture Foundation documentation complete.
 
 ## Active Work Items
 
-- Publication lifecycle validation
-- Platform execution ownership validation
-- Recorder execution model validation
-- Form-filling architecture validation
-- Module boundary validation against OK-Core
-- Governance alignment
-- Inventory completion
+| Item | Status |
+|---|---|
+| Ownership boundary documentation | Complete |
+| Domain model documentation | Complete |
+| State model documentation | Complete |
+| API draft documentation | Complete |
+| Research register | Complete |
+| DoD validation | Complete |
+| OK-Core handover | Complete |
+| Runtime implementation | Blocked until OK-Core approval |

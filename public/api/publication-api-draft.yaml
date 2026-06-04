@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: publicationManagement API Draft
+  version: 0.1.0-draft
+  description: Non-implementation draft for OK-Core review. All access must be mediated through communicationLayer.
+servers:
+  - url: https://example.invalid/pubm/v1
+    description: Placeholder only. Not an implementation endpoint.
+paths:
+  /publications:
+    post:
+      summary: Create a publication draft anchor
+      operationId: createPublication
+      tags: [Publications]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePublicationRequest'
+      responses:
+        '201':
+          description: Publication created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /publications/{publicationId}:
+    get:
+      summary: Get publication
+      operationId: getPublication
+      tags: [Publications]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      responses:
+        '200':
+          description: Publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /publications/{publicationId}/submit-review:
+    post:
+      summary: Submit publication draft for review
+      operationId: submitPublicationForReview
+      tags: [Lifecycle]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      responses:
+        '200':
+          description: Updated publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /publications/{publicationId}/approve:
+    post:
+      summary: Approve publication
+      operationId: approvePublication
+      tags: [Lifecycle]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      responses:
+        '200':
+          description: Approved publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /publications/{publicationId}/schedule:
+    post:
+      summary: Schedule publication
+      operationId: schedulePublication
+      tags: [Schedules]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulePublicationRequest'
+      responses:
+        '200':
+          description: Scheduled publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationSchedule'
+        '409':
+          $ref: '#/components/responses/Conflict'
+  /publications/{publicationId}/mark-published:
+    post:
+      summary: Mark publication as published
+      operationId: markPublicationPublished
+      tags: [Lifecycle]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      responses:
+        '200':
+          description: Published publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+  /publications/{publicationId}/archive:
+    post:
+      summary: Archive publication
+      operationId: archivePublication
+      tags: [Lifecycle]
+      parameters:
+        - $ref: '#/components/parameters/PublicationId'
+      responses:
+        '200':
+          description: Archived publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+components:
+  parameters:
+    PublicationId:
+      name: publicationId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    ValidationError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Forbidden:
+      description: Forbidden or boundary violation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    Conflict:
+      description: Lifecycle or version conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+  schemas:
+    CreatePublicationRequest:
+      type: object
+      required: [sourceModule, sourceObjectId]
+      properties:
+        sourceModule:
+          type: string
+          example: adManagement
+        sourceObjectId:
+          type: string
+        initialTemplateId:
+          type: string
+          format: uuid
+    SchedulePublicationRequest:
+      type: object
+      required: [scheduledAt]
+      properties:
+        scheduledAt:
+          type: string
+          format: date-time
+        reason:
+          type: string
+    Publication:
+      type: object
+      required: [publicationId, currentStatus]
+      properties:
+        publicationId:
+          type: string
+          format: uuid
+        sourceModule:
+          type: string
+        sourceObjectId:
+          type: string
+        currentStatus:
+          $ref: '#/components/schemas/PublicationStatus'
+        activeVersionId:
+          type: string
+          format: uuid
+          nullable: true
+    PublicationSchedule:
+      type: object
+      properties:
+        scheduleId:
+          type: string
+          format: uuid
+        publicationId:
+          type: string
+          format: uuid
+        scheduleState:
+          type: string
+          enum: [PLANNED, ACTIVE, DUE, COMPLETED, CANCELLED, FAILED]
+        scheduledAt:
+          type: string
+          format: date-time
+    PublicationStatus:
+      type: string
+      enum: [DRAFT, REVIEW, APPROVED, SCHEDULED, PUBLISHED, ARCHIVED, RETIRED]
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+            correlationId:
+              type: string
