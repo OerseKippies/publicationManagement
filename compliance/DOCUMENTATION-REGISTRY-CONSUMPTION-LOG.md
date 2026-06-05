@@ -12,8 +12,8 @@ Module Type: Runtime Module
 
 | Date | Registry Version | Action | Result | Commit | Notes |
 |---|---|---|---|---|---|
-| 2026-06-05 | 1.0.0 | Initial adoption — governance alignment remediation | PASS | e1ddf13 | All REQUIRED Runtime Module documents present; compliance files created |
-| 2026-06-05 | 1.0.0 | Registry inventory verification | PASS | pending | See governance/REGISTRY-COMPLIANCE-MATRIX.md |
+| 2026-06-05 | 1.0.0 | Initial adoption — governance alignment remediation | PASS | e4a645a | All REQUIRED Runtime Module documents present; compliance files created |
+| 2026-06-05 | 1.0.0 | Registry inventory verification | PASS | e4a645a | See governance/REGISTRY-COMPLIANCE-MATRIX.md |
 
 ---
 

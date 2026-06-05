@@ -24,7 +24,7 @@ No `compliance/MANDATORY-READING-CONSUMPTION-LOG.md` existed prior to 2026-06-05
 
 Reviewer: pubM governance remediation (CCM assignment)
 
-Repository version at review: e1ddf13 (pre-remediation baseline); post-remediation commit pending
+Repository version at review: e4a645a (governance alignment commit on main)
 
 Reason: Governance alignment remediation — initial mandatory reading compliance
 
@@ -57,7 +57,7 @@ Findings: Architecture foundation content compliant; governance baseline v1.0.0 
 | 2026-06-05 | OK-Core/governance/MANDATORY-READING-CONSUMPTION-STANDARD.md | main | Runtime required | pubM governance remediation | PASS |
 | 2026-06-05 | OK-Core/governance/GOVM-INTEGRATION-STANDARD.md | main | Runtime required — verification chain | pubM governance remediation | PASS |
 | 2026-06-05 | OK-Core/implementation/IMPLEMENTATION-DEPENDENCY-MAP.md | main | Runtime required | pubM governance remediation | PASS |
-| 2026-06-05 | publicationManagement/README.md | e1ddf13 | Module context | pubM governance remediation | PASS |
+| 2026-06-05 | publicationManagement/README.md | e4a645a | Module context | pubM governance remediation | PASS |
 
 ---
 

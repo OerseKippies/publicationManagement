@@ -1,9 +1,12 @@
 # govM Verification Request — pubM Governance Alignment
 
 Date: 2026-06-05
-Status: **PREPARED — NOT SUBMITTED**
+Status: **READY FOR SUBMISSION**
 Request Type: Governance Alignment Verification
 RFA-ID: RFA-PUBM-GOV-ALIGN-001
+
+GitHub commit: e4a645abccfb37d71a73f798df30e9c34d279e7a (e4a645a)
+Branch: main
 
 ---
 
@@ -128,20 +131,18 @@ Summary: <maximum three lines>
 
 ## Submission Prerequisites
 
-Before sending this request to govM:
-
-- [ ] All artifacts committed to GitHub
-- [ ] Post-push commit hash recorded in evidence indexes
-- [ ] reviews/FINAL-GOVERNANCE-ALIGNMENT-VALIDATION.md shows PASS WITH FINDINGS resolved (F-VAL-001)
+- [x] All artifacts committed to GitHub (e4a645a)
+- [x] Post-push commit hash recorded in evidence indexes
+- [x] reviews/FINAL-GOVERNANCE-ALIGNMENT-VALIDATION.md F-VAL-001 resolved
 
 ---
 
 ## Request Status
 
 ```text
-PREPARED — NOT SUBMITTED
+READY FOR SUBMISSION TO govM
 
-Do not send to govM until maintainer commits remediation to GitHub.
+Governance artifacts on GitHub at e4a645a.
 Do not claim govM PASS until govM audit report exists.
 ```
 

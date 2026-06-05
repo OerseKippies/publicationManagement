@@ -1,9 +1,12 @@
 # RFA — pubM Governance Alignment
 
 Date: 2026-06-05
-Status: **PREPARED — NOT SUBMITTED**
+Status: **READY FOR SUBMISSION**
 Authority: publicationManagement (pubM)
 RFA-ID: RFA-PUBM-GOV-ALIGN-001
+
+GitHub evidence commit: e4a645abccfb37d71a73f798df30e9c34d279e7a (e4a645a)
+Branch: main
 
 ---
 
@@ -17,7 +20,7 @@ Approval Type: **Governance Alignment**
 
 Requested Status: **Governance Alignment Approved (Baseline Registry v1.0.0)**
 
-Lifecycle State: **PREPARED**
+Lifecycle State: **READY FOR SUBMISSION**
 
 Related Issue: To be assigned by OK-Core upon submission
 
@@ -36,7 +39,11 @@ RFA Submitted (pending)
 → Lifecycle Closed
 ```
 
-This RFA is prepared but **not submitted**. Module will send Evidence Ready trigger only after maintainer review and commit of remediation artifacts.
+This RFA is ready for submission. Evidence resolves on GitHub at commit **e4a645a** on branch **main**.
+
+```text
+OerseKippies/publicationManagement/reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md@e4a645a
+```
 
 ---
 
@@ -159,4 +166,4 @@ No architecture or ownership changes introduced by this remediation.
 
 See `approval-request/GOVERNANCE-ALIGNMENT-CHECKLIST.md`
 
-**Do not submit until maintainer confirms all artifacts committed to GitHub.**
+**Do not submit until maintainer sends RFA to OK-Core and Evidence Ready trigger. Do not claim Governance Alignment Approved until OK-Core approval record exists.**
