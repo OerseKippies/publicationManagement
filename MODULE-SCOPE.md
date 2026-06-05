@@ -17,6 +17,13 @@ Authority: OK-Core
 | PublicationVersion | Preserved publication version history | Local ADR-0002 |
 | PublicationStatus | Lifecycle status and transition governance | Local ADR-0003 |
 | PublicationAuditRecord | Immutable mutation evidence | Local ADR-0005 |
+| PublicationActivation | Activation state within publication lifecycle | OK-Core MODULE-BOUNDARIES |
+| PublicationArchiving | Archiving state within publication lifecycle | OK-Core MODULE-BOUNDARIES |
+| PublicationSynchronization | Publication state sync with external platforms | OK-Core MODULE-BOUNDARIES, Issue #26 |
+| PlatformExecution | Platform publication execution records | OK-Core MODULE-BOUNDARIES, Issue #26 |
+| PlatformFormFilling | Platform form execution (HYBRID extension) | OK-Core MODULE-BOUNDARIES |
+| RecorderExecution | Recorder-based execution (HYBRID extension) | OK-Core MODULE-BOUNDARIES |
+| PublicationHistory | Immutable publication history | OK-Core MODULE-BOUNDARIES |
 
 ## Allowed Capabilities
 
@@ -28,6 +35,9 @@ Authority: OK-Core
 - Publication channel configuration
 - Publication history
 - Publication audit trail
+- Publication activation and archiving
+- Publication synchronization with external platforms
+- Platform execution governance (HYBRID runtime extension per ADR-0026)
 
 ## Explicit Non-Ownership
 
@@ -39,7 +49,8 @@ Authority: OK-Core
 | Orders, customers, invoices | salesManagement / relationshipManagement / financeManagement |
 | Advertisements, advertisement pricing, advertisement business rules | adManagement |
 | Communication routing, service mediation, contracts | communicationLayer |
-| Direct marketplace integrations, external API gateway ownership | Out of pubM MVP foundation scope |
+| Direct marketplace integrations, external API gateway ownership | communicationLayer / separately approved connectors |
+| Platform execution runtime workers | HYBRID extension — owned by pubM, implementation out of MVP foundation scope |
 
 ## Boundary Rule
 

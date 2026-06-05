@@ -6,7 +6,7 @@ Authority: OK-Core
 
 ## Architecture Summary
 
-publicationManagement is the OK module responsible for publication lifecycle governance. It owns publication records, drafts, templates, channel configuration, targets, schedules, versions, statuses and immutable audit records.
+publicationManagement is the OK module responsible for publication lifecycle governance. It owns publication records, drafts, templates, channel configuration, targets, schedules, versions, statuses, activation, archiving, synchronization, platform execution records, and immutable audit records.
 
 pubM is not a marketplace integration module and not a communication gateway. Cross-module communication is mediated by communicationLayer.
 
@@ -43,7 +43,14 @@ PublicationSchedule
 PublicationVersion
 PublicationStatus
 PublicationAuditRecord
+PublicationActivation
+PublicationArchiving
+PublicationSynchronization
+PlatformExecution
+PublicationHistory
 ```
+
+Ownership clarification: `OWNERSHIP-CLARIFICATION-PUBM.md` (Issue #26). Platform execution runtime is HYBRID extension per OK-Core ADR-0026; ownership remains pubM.
 
 ## Lifecycle Model
 
