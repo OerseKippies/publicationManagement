@@ -3,7 +3,7 @@
 Repository: OerseKippies/publicationManagement
 Module code: pubM
 Governance authority: OK-Core
-Status: Architecture Foundation Approved — Governance Alignment In Progress
+Status: Architecture Foundation Approved — MVP Phase 2 Preparation
 
 ## Purpose
 
@@ -94,8 +94,8 @@ The foundation excludes Node.js runtime, npm runtime, Docker, RabbitMQ, Redis, P
 |---|---|
 | Architecture Foundation | APPROVED (OK-Core APR-2026-06-05-006) |
 | Deployment Classification (HYBRID) | APPROVED (OK-Core APR-2026-06-05-012) |
-| Governance Alignment (Registry v1.0.0) | IN PROGRESS |
-| MVP Ready For Implementation | NOT APPROVED |
+| Governance Alignment (Registry v1.0.0) | CLOSED (baseline satisfied) |
+| MVP Runtime Complete | NOT APPROVED (next gate) |
 | Canonical API Promotion | DEFERRED (Issue #28) |
 
 ## Registry Compliance

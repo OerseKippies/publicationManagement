@@ -10,8 +10,8 @@ Purpose: Map governance decisions to pubM implementation evidence
 
 | Decision | Affected Document | Implementation Status | Evidence | Gap |
 |---|---|---|---|---|
-| GD-2026-06-05-ECOSYSTEM-BASELINE | All modules — registry v1.0.0 adoption | **Complete (remediation)** | compliance/, governance/REGISTRY-COMPLIANCE-MATRIX.md | govM verification pending |
-| GD-2026-06-05-ECOSYSTEM-BASELINE | Mandatory reading compliance | **Complete (remediation session)** | compliance/MANDATORY-READING-CONSUMPTION-LOG.md | Historical evidence unavailable; govM pending |
+| GD-2026-06-05-ECOSYSTEM-BASELINE | All modules — registry v1.0.0 adoption | **Complete** | compliance/, governance/REGISTRY-COMPLIANCE-MATRIX.md | None — govM PASS WITH CONDITIONS |
+| GD-2026-06-05-ECOSYSTEM-BASELINE | Mandatory reading compliance | **Complete (remediation session)** | compliance/MANDATORY-READING-CONSUMPTION-LOG.md | Historical unavailable — documented; govM accepted |
 | GD-2026-06-05-ECOSYSTEM-BASELINE | Issue #28 canonical API deferral | **Complete** | handover/, architecture/DOD-VALIDATION.md | None — accepted implementation-phase risk |
 | GD-2026-06-05-ECOSYSTEM-BASELINE | Issue #26 pubM ownership | **Complete** | OWNERSHIP-CLARIFICATION-PUBM.md, OK-Core ADR-0027 | None |
 | GD-2026-06-05-ECOSYSTEM-BASELINE | Implementation readiness authorization | **Partial** | architecture/DOD-VALIDATION.md | Governance Alignment approval required before MVP Ready |
@@ -26,7 +26,7 @@ Purpose: Map governance decisions to pubM implementation evidence
 | APR-2026-06-05-006 | Architecture Foundation | APPROVED | handover/OK-CORE-HANDOVER-PUBM-MVP-ARCHITECTURE-COMPLETE.md | None |
 | APR-2026-06-05-012 | Deployment Classification (HYBRID) | APPROVED | architecture/DEPLOYMENT.md | None |
 | APR-2026-06-05-015 | Deployment Matrix Acceptance | APPROVED (ecosystem) | architecture/DEPLOYMENT.md | None |
-| Governance Alignment | Registry v1.0.0 | **NOT APPROVED** | approval-request/RFA-GOVERNANCE-ALIGNMENT.md | RFA not submitted; govM not verified |
+| Governance Alignment | Registry v1.0.0 | **CLOSED — not a separate OK-Core approval** | audits/PUBM-AUDIT-FINDING-CLOSURE.md, START-HERE.md §8 | Separate RFA not required under MVP Acceleration |
 
 ---
 
@@ -37,12 +37,10 @@ RFA-PUBM-GOV-ALIGN-001 (approval-request/RFA-GOVERNANCE-ALIGNMENT.md)
   → Evidence Package (reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md)
   → Self-Assessment Review (reviews/GOVERNANCE-ALIGNMENT-REVIEW.md)
   → Findings (reviews/GOVERNANCE-ALIGNMENT-FINDINGS.md)
-  → [PENDING] govM Verification
-  → [PENDING] OK-Core Evidence Resolution
-  → [PENDING] OK-Core Review Report
-  → [PENDING] Approval Record
-  → [PENDING] Closure Audit
-  → [PENDING] Lifecycle CLOSED
+  → govM Verification (PASS WITH CONDITIONS)
+  → OK-Core Governance Alignment approval (NOT REQUIRED — START-HERE §8)
+  → Lifecycle CLOSED for governance remediation track
+  → Next: MVP Phase 2 — MVP Runtime Complete (after build)
 ```
 
 ---
@@ -54,8 +52,8 @@ RFA-PUBM-GOV-ALIGN-001 (approval-request/RFA-GOVERNANCE-ALIGNMENT.md)
 | A | Copy compliance templates | Complete | compliance/ |
 | B | Inventory docs against registry | Complete | governance/REGISTRY-COMPLIANCE-MATRIX.md |
 | C | Create missing REQUIRED documents | Complete | compliance/, reviews/, approval-request/ |
-| D | govM verification | **Pending** | reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md |
-| E | OK-Core adoption sign-off | **Pending** | approval-request/RFA-GOVERNANCE-ALIGNMENT.md |
+| D | govM verification | **Complete** | GOVM-PUBM-GOVERNANCE-ALIGNMENT-VERIFICATION-2026-06-05.md |
+| E | OK-Core adoption sign-off | **Superseded** | START-HERE.md — baseline use; MVP Runtime approval at build complete |
 
 Source: OK-Core/governance/ECOSYSTEM-ADOPTION-PLAN.md
 
@@ -66,9 +64,9 @@ Source: OK-Core/governance/ECOSYSTEM-ADOPTION-PLAN.md
 | Requirement | Document | Status | Evidence |
 |---|---|---|---|
 | Repository reporting | Governance artifacts on GitHub | Complete | governance/, compliance/, reviews/ |
-| Evidence reporting | Path references with commit | Partial | Evidence package uses paths; post-commit hash update required |
-| Status reporting | README, DOD, ACTIVE-WORK | Complete (remediation) | README.md, architecture/DOD-VALIDATION.md |
-| Approval reporting | RFA prepared, not submitted | Prepared | approval-request/ |
+| Evidence reporting | Path references with commit | **Complete** | reviews/evidence/*@e4a645a, HEAD @c018e61 |
+| Status reporting | README, DOD, ACTIVE-WORK | Complete | README.md, architecture/DOD-VALIDATION.md |
+| Approval reporting | Governance alignment RFA | **Closed** | Not submitted — superseded by START-HERE §8 |
 
 Source: OK-Core/governance/REPOSITORY-REPORTING-STANDARD.md
 
@@ -81,13 +79,13 @@ Registry (OK-Core v1.0.0)
   → Consumption Log (compliance/DOCUMENTATION-REGISTRY-CONSUMPTION-LOG.md)
     → Compliance File (compliance/MODULE-COMPLIANCE.md)
       → Repository Files (GitHub)
-        → [PENDING] govM Verification Report
-          → [PENDING] OK-Core Decision
+        → govM Verification Report (PASS WITH CONDITIONS)
+          → OK-Core Decision (Governance alignment approval not required — START-HERE)
 
 MANDATORY-READ-MATERIAL.md
   → Reading Log (compliance/MANDATORY-READING-CONSUMPTION-LOG.md)
-    → [PENDING] govM Reading Verification
-      → [PENDING] OK-Core Decision
+    → govM Reading Verification (PASS WITH CONDITIONS)
+      → MVP product reading at Phase 2 / MVP Runtime Complete
 ```
 
 Source: OK-Core/governance/GOVM-INTEGRATION-STANDARD.md

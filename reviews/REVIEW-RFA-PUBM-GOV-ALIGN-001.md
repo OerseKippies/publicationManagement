@@ -1,25 +1,14 @@
-# Governance Alignment Review — pubM
-
-Date: 2026-06-05
-Status: **Superseded — use canonical review file**
-
-Canonical review per REVIEW-STANDARD naming:
-
-```text
-reviews/REVIEW-RFA-PUBM-GOV-ALIGN-001.md
-```
-
-Closure: F-GOVM-002 — audits/PUBM-AUDIT-FINDING-CLOSURE.md
-
----
-
-# Governance Alignment Review — pubM (legacy path)
+# REVIEW-RFA-PUBM-GOV-ALIGN-001 — pubM Governance Alignment
 
 Date: 2026-06-05
 RFA-ID: RFA-PUBM-GOV-ALIGN-001
-Review Type: Self-Assessment (Pre-Submission)
+Review Type: Self-Assessment (Governance Alignment Remediation)
 Module: publicationManagement (pubM)
 Authority: pubM governance remediation
+
+Canonical name per OK-Core/governance/REVIEW-STANDARD.md.
+
+Supersedes display name in `reviews/GOVERNANCE-ALIGNMENT-REVIEW.md` (same content; F-GOVM-002 closure).
 
 ---
 
@@ -63,47 +52,23 @@ Full index: reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md
 | Documentation | PASS | All REQUIRED registry items present |
 | Registry Compliance | PASS | 100% per REGISTRY-COMPLIANCE-MATRIX.md |
 | Reading Compliance | CONDITIONAL PASS | Remediation session logged; historical unavailable |
-| DoD | PASS | Updated to reflect actual approval state |
+| DoD | PASS | Foundation approved |
 
 ---
 
 ## Findings
 
-See reviews/GOVERNANCE-ALIGNMENT-FINDINGS.md
-
-| Severity | Count |
-|---|---|
-| Critical | 0 |
-| High | 0 |
-| Medium | 1 |
-| Low | 2 |
-
----
-
-## Risks
-
-| Risk | Severity | Status |
-|---|---|---|
-| govM verification not yet performed | Medium | Open — package prepared |
-| Canonical API deferred | Low | Accepted per Issue #28 |
-| Historical reading evidence unavailable | Low | Documented in reading log |
-
----
-
-## Recommendation
-
-```text
-PASS — pubM is ready for Governance Alignment review submission.
-
-Submit RFA-PUBM-GOV-ALIGN-001 after maintainer commit and govM verification request.
-Do not claim Governance Alignment Approved until OK-Core approval record exists.
-```
+See reviews/GOVERNANCE-ALIGNMENT-FINDINGS.md and audits/PUBM-AUDIT-FINDING-CLOSURE.md
 
 ---
 
 ## Verdict
 
-**PASS** (self-assessment — pending external govM and OK-Core review)
+**PASS** (self-assessment)
+
+govM verification: **PASS WITH CONDITIONS** — OerseKippies/governanceVerificationManagement/audits/GOVM-PUBM-GOVERNANCE-ALIGNMENT-VERIFICATION-2026-06-05.md
+
+Governance Alignment OK-Core approval: **Not required** per OK-Core/START-HERE.md §8 (MVP Acceleration). Activity closed — see governance/PUBM-NEXT-MILESTONE-DECISION.md.
 
 ---
 
@@ -111,9 +76,9 @@ Do not claim Governance Alignment Approved until OK-Core approval record exists.
 
 ```text
 RFA-PUBM-GOV-ALIGN-001
-  → reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md
-  → reviews/GOVERNANCE-ALIGNMENT-FINDINGS.md
-  → [PENDING] govM audit
-  → [PENDING] OK-Core review
-  → [PENDING] Approval record
+  → reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md@c018e61
+  → reviews/GOVM-VERIFICATION-RESULT.md
+  → govM GOVM-PUBM-GOVERNANCE-ALIGNMENT-VERIFICATION-2026-06-05.md
+  → Governance alignment cycle CLOSED (START-HERE supersedes separate approval)
+  → Next: MVP Phase 2 — MVP Runtime Preparation
 ```

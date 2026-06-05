@@ -1,12 +1,15 @@
 # RFA — pubM Governance Alignment
 
 Date: 2026-06-05
-Status: **READY FOR SUBMISSION**
+Status: **CLOSED WITHOUT SUBMISSION**
 Authority: publicationManagement (pubM)
 RFA-ID: RFA-PUBM-GOV-ALIGN-001
 
+Closure: OK-Core/START-HERE.md §8 — Architecture foundations approved; new approvals only at MVP Runtime Complete. govM PASS WITH CONDITIONS. See audits/PUBM-AUDIT-FINDING-CLOSURE.md.
+
+**Do not submit this RFA.**
+
 GitHub evidence commit: e4a645abccfb37d71a73f798df30e9c34d279e7a (e4a645a)
-Branch: main
 
 ---
 

@@ -28,9 +28,11 @@ Review: reviews/GOVERNANCE-ALIGNMENT-REVIEW.md
 
 | ID | Finding | Severity | Impact | Remediation | Closure Criteria |
 |---|---|---|---|---|---|
-| F-GOV-012 | govM verification not performed | MEDIUM | External gate for Governance Alignment | Submit govM verification request with evidence package | govM report PASS or CONDITIONAL PASS |
-| F-GOV-013 | RFA not submitted to OK-Core | MEDIUM | Cannot obtain Governance Alignment approval | Maintainer submits RFA after commit | OK-Core RFA registered in rfas/ |
-| F-GOV-014 | Historical mandatory reading evidence unavailable | LOW | Reading compliance conditional | Remediation session logged; govM verifies | govM reading verification PASS |
+| F-GOV-012 | govM verification not performed | MEDIUM | External gate for Governance Alignment | **CLOSED** — govM PASS WITH CONDITIONS |
+| F-GOV-013 | RFA not submitted to OK-Core | MEDIUM | Cannot obtain Governance Alignment approval | **CLOSED** — not required per START-HERE §8 |
+| F-GOV-014 | Historical mandatory reading evidence unavailable | LOW | Reading compliance conditional | **Accepted** — govM condition C-READ-001 |
+| F-GOVM-001 | Stale traceability commit reference | LOW | Traceability accuracy | **CLOSED** — audits/PUBM-AUDIT-FINDING-CLOSURE.md |
+| F-GOVM-002 | Review naming convention mismatch | LOW | REVIEW-STANDARD alignment | **CLOSED** — REVIEW-RFA-PUBM-GOV-ALIGN-001.md |
 
 ---
 
@@ -49,19 +51,17 @@ Review: reviews/GOVERNANCE-ALIGNMENT-REVIEW.md
 | Category | Count |
 |---|---|
 | Resolved | 11 |
-| Open | 3 |
+| Closed (governance track) | 5 |
 | Accepted risks | 3 |
 
-No critical or high open findings remain. Open items require external actions (govM, OK-Core submission).
+No open findings. Governance remediation track closed. Next: MVP Phase 2 build.
 
 ---
 
 ## Closure Rule
 
-When F-GOV-012, F-GOV-013 resolved and OK-Core Governance Alignment approval recorded:
+When MVP Runtime Complete approval recorded:
 
 ```text
-Status: CLOSED — Governance Alignment Approved
+Status: CLOSED — MVP Runtime Complete (Phase 2)
 ```
-
-Update this document and reviews/GOVERNANCE-ALIGNMENT-REVIEW.md accordingly.

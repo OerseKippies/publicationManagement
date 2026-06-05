@@ -1,7 +1,7 @@
 # pubM Definition of Done Validation
 
-Status: Governance Alignment In Progress
-Date: 2026-06-05 (updated)
+Status: MVP Phase 2 Preparation
+Date: 2026-06-06 (updated)
 
 ---
 
@@ -11,8 +11,9 @@ Date: 2026-06-05 (updated)
 |---|---|---|
 | Architecture Foundation | **APPROVED** | OK-Core APR-2026-06-05-006 |
 | Deployment Classification (HYBRID) | **APPROVED** | OK-Core APR-2026-06-05-012 |
-| Governance Alignment (Registry v1.0.0) | **IN PROGRESS** | compliance/, approval-request/RFA-GOVERNANCE-ALIGNMENT.md |
-| MVP Ready For Implementation | **NOT APPROVED** | No OK-Core record |
+| Governance Alignment (Registry v1.0.0) | **CLOSED** | START-HERE §8 — separate approval not required; govM PASS WITH CONDITIONS; audits/PUBM-AUDIT-FINDING-CLOSURE.md |
+| MVP Runtime Complete | **NOT APPROVED** | Next approval gate per START-HERE |
+| MVP Ready For Implementation | **N/A** | Not a START-HERE approval gate |
 | Canonical API Promotion | **DEFERRED** | OK-Core Issue #28 / EGA-F001 |
 
 ---
@@ -32,7 +33,7 @@ Date: 2026-06-05 (updated)
 | API governance | PASS | `contracts/`, `public/api/publication-api-draft.yaml` | DRAFT_IN_MODULE; canonical deferred |
 | Handover | PASS | `handover/OK-CORE-HANDOVER-PUBM-MVP-ARCHITECTURE-COMPLETE.md` | Foundation approved |
 | Registry compliance | PASS | `governance/REGISTRY-COMPLIANCE-MATRIX.md` | 100% REQUIRED present |
-| Reading compliance | CONDITIONAL PASS | `compliance/MANDATORY-READING-CONSUMPTION-LOG.md` | Remediation session; govM pending |
+| Reading compliance | CONDITIONAL PASS | `compliance/MANDATORY-READING-CONSUMPTION-LOG.md` | govM verified; historical unavailable documented |
 | Audit closure | PASS | `docs/reports/2026-06-04-ARCHITECTURE-FOUNDATION-AUDIT-CLOSURE.md` | Prior local findings remediated |
 
 ---
@@ -51,31 +52,32 @@ Major findings count:
 0
 ```
 
-Open governance process items (not DoD failures):
+Open items (not DoD failures):
 
 ```text
-govM verification pending
-RFA not yet submitted to OK-Core
+MVP Phase 2 runtime build not started
+MVP Runtime Complete approval pending (post-build)
 ```
 
 ---
 
 ## Open Blockers
 
-### Governance Alignment (In Progress)
+### MVP Phase 2 (Next)
 
-- govM verification not yet performed
-- RFA-PUBM-GOV-ALIGN-001 prepared but not submitted
+- Runtime implementation not started
+- Runtime evidence package not created
+- MVP Runtime RFA not submitted
 
-### MVP Ready For Implementation (Not Submitted)
+### Closed / Not Applicable
 
-- Requires Governance Alignment approval first
-- No MVP Ready RFA submitted
+- Governance Alignment separate approval — CLOSED per START-HERE §8
+- MVP Ready For Implementation — not a START-HERE approval gate
 
 ### Deferred (Not Blockers)
 
 - Canonical API contract promotion — OK-Core Issue #28 (accepted risk)
-- Platform execution HYBRID runtime — future implementation scope per ADR-0026
+- Platform execution HYBRID runtime — out of MVP Phase 2 scope per ADR-0026
 
 ---
 
@@ -96,13 +98,19 @@ APPROVED (OK-Core APR-2026-06-05-012)
 Governance Alignment:
 
 ```text
-IN PROGRESS — artifacts prepared, pending submission and OK-Core approval
+CLOSED — baseline satisfied; govM PASS WITH CONDITIONS; separate OK-Core approval not required (START-HERE §8)
+```
+
+MVP Runtime Complete:
+
+```text
+NOT APPROVED — next approval gate after Phase 2 build
 ```
 
 MVP Ready For Implementation:
 
 ```text
-NOT APPROVED
+N/A — not a START-HERE approval gate
 ```
 
 Canonical API Promotion:

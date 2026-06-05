@@ -2,54 +2,63 @@
 
 ## Current Phase
 
-Governance alignment remediation — artifacts prepared, pending submission.
+**MVP Phase 2 — Publication Lifecycle Runtime Preparation**
+
+Authority: OK-Core/START-HERE.md, implementation/PUBM-MVP-PROGRAM-ALIGNMENT.md
+
+Governance remediation track: **CLOSED** (audits/PUBM-AUDIT-FINDING-CLOSURE.md)
+
+---
 
 ## Completed
 
 | Item | Status |
 |---|---|
-| Architecture Foundation documentation | Complete — OK-Core APPROVED |
-| Ownership boundary documentation | Complete |
-| Domain model documentation | Complete |
-| State model documentation | Complete |
-| API draft documentation | Complete |
-| Research register | Complete |
-| DoD validation (foundation) | Complete — APPROVED |
-| OK-Core handover (foundation) | Complete |
-| Deployment classification (HYBRID) | Complete — OK-Core APPROVED |
-| Registry v1.0.0 compliance files | Complete |
-| Mandatory reading log (remediation session) | Complete |
-| Governance alignment RFA package | Complete — not submitted |
-| govM evidence package | Complete — not submitted |
+| Architecture Foundation | OK-Core APPROVED (APR-006) |
+| Deployment Classification (HYBRID) | OK-Core APPROVED (APR-012) |
+| Registry v1.0.0 compliance | Complete |
+| govM governance verification | PASS WITH CONDITIONS |
+| Governance alignment remediation | Closed — no separate OK-Core approval required |
+| Audit findings F-GOVM-001, F-GOVM-002 | CLOSED |
+| MVP program alignment analysis | Complete |
 
-## In Progress
+---
+
+## Next (Phase 2)
 
 | Item | Status |
 |---|---|
-| Governance Alignment submission package | Complete — validation PASS WITH FINDINGS |
-| govM verification | Request prepared — not submitted |
-| RFA submission | Prepared — not submitted |
+| Publication Request runtime | Not started |
+| Publication State lifecycle | Not started |
+| Publication History | Not started |
+| Module-owned audit records | Not started |
+| Runtime evidence (`docs/runtime-evidence/`) | Not started |
+| Phase 2 checkpoint review | Not started |
+| MVP Runtime Complete RFA | After build |
 
-## Blocked (Pre-Submission)
+---
+
+## Deferred
 
 | Item | Status |
 |---|---|
-| GitHub push of remediation artifacts | Required before submission (F-VAL-001) |
+| Governance Alignment OK-Core RFA | Closed without submission — START-HERE §8 |
+| Canonical API promotion | Issue #28 |
+| HYBRID platform execution | Out of MVP Phase 2 scope |
 
-## Blocked (Future)
+---
 
-| Item | Status |
+## Dependencies Ready
+
+| Dependency | Status |
 |---|---|
-| MVP Ready For Implementation | Blocked until Governance Alignment approved |
-| Runtime implementation | Blocked until MVP Ready approved |
-| Canonical API promotion | Deferred — Issue #28 |
+| commL, idM, mdM (foundation) | Approved — consume |
+| invM Phase 1 | MVP Runtime APPROVED (APR-2026-06-06-022) |
 
-## Next Actions
+---
 
-1. Commit and push all governance alignment artifacts to GitHub
-2. Update evidence package commit hashes
-3. Send reviews/GOVM-VERIFICATION-REQUEST.md to govM
-4. Submit approval-request/RFA-GOVERNANCE-ALIGNMENT.md to OK-Core
-5. Send Evidence Ready trigger
+## Next Action
 
-See: governance/GOVERNANCE-ALIGNMENT-SUBMISSION-READINESS.md
+Begin MVP Phase 2 build per `implementation/PUBM-MVP-PROGRAM-ALIGNMENT.md`. Do not expand governance documentation unless build impacts boundaries.
+
+See: `governance/PUBM-NEXT-MILESTONE-DECISION.md`
