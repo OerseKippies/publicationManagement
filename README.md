@@ -3,7 +3,7 @@
 Repository: OerseKippies/publicationManagement
 Module code: pubM
 Governance authority: OK-Core
-Status: Architecture Foundation Approved — MVP Phase 2 Preparation
+Status: MVP Phase 2 Runtime Implemented — Host Verification Pending
 
 ## Purpose
 
@@ -95,7 +95,8 @@ The foundation excludes Node.js runtime, npm runtime, Docker, RabbitMQ, Redis, P
 | Architecture Foundation | APPROVED (OK-Core APR-2026-06-05-006) |
 | Deployment Classification (HYBRID) | APPROVED (OK-Core APR-2026-06-05-012) |
 | Governance Alignment (Registry v1.0.0) | CLOSED (baseline satisfied) |
-| MVP Runtime Complete | NOT APPROVED (next gate) |
+| MVP Runtime Complete | NOT APPROVED (implementation complete) |
+| Runtime | PHP 8.3 + MariaDB 10.6 — `src-php/`, `schemas/` |
 | Canonical API Promotion | DEFERRED (Issue #28) |
 
 ## Registry Compliance

@@ -1,5 +1,25 @@
-# tests
+# pubM Tests
 
-Runtime tests are intentionally absent because implementation has not started.
+PHP 8.3 required. No Composer/PHPUnit — custom test harness.
 
-Architecture validation evidence is documented in `architecture/DOD-VALIDATION.md`.
+## Run
+
+```bash
+php tests/run.php
+```
+
+## Coverage
+
+| Test | Validates |
+|---|---|
+| lifecycle draft to published | Full state machine + versions |
+| schedule cron processing | Due schedule → PUBLISHED |
+| audit trail immutability | Required audit actions present |
+| persistence reload | Draft/publication reload from DB |
+| Uuid validation | Infrastructure helpers |
+
+## Schema
+
+SQLite in-memory schema: `tests/support/sqlite_schema.sql`
+
+Production schema: `schemas/001_publications.sql`

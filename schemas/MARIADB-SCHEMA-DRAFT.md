@@ -1,6 +1,6 @@
 # pubM MariaDB Schema Draft
 
-Status: Architecture Foundation, non-implementation draft
+Status: Implemented — see schemas/001_publications.sql
 Target: MariaDB 10.6
 
 ## Ownership Rule
@@ -54,4 +54,4 @@ Shared mutable tables are forbidden.
 
 ## Implementation Gate
 
-This schema is not approved for runtime implementation until OK-Core approval is granted.
+Runtime schema implemented in `schemas/001_publications.sql`. Apply via `scripts/migrate.php`.
