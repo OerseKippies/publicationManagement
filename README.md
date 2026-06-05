@@ -3,7 +3,7 @@
 Repository: OerseKippies/publicationManagement
 Module code: pubM
 Governance authority: OK-Core
-Status: MVP v1 Architecture Foundation candidate
+Status: Architecture Foundation Approved — Governance Alignment In Progress
 
 ## Purpose
 
@@ -88,8 +88,26 @@ Git deployment
 
 The foundation excludes Node.js runtime, npm runtime, Docker, RabbitMQ, Redis, Python runtime dependencies, WebSockets and long-running daemons.
 
+## Approval Status
+
+| Milestone | Status |
+|---|---|
+| Architecture Foundation | APPROVED (OK-Core APR-2026-06-05-006) |
+| Deployment Classification (HYBRID) | APPROVED (OK-Core APR-2026-06-05-012) |
+| Governance Alignment (Registry v1.0.0) | IN PROGRESS |
+| MVP Ready For Implementation | NOT APPROVED |
+| Canonical API Promotion | DEFERRED (Issue #28) |
+
+## Registry Compliance
+
+Module type: Runtime Module per OK-Core `governance/MODULE-TYPE-CLASSIFICATION.md`
+
+Registry: OK-Core `governance/REQUIRED-DOCUMENTATION-REGISTRY.md` v1.0.0
+
+Compliance evidence: `compliance/`, `governance/REGISTRY-COMPLIANCE-MATRIX.md`
+
 ## Implementation Status
 
-No runtime implementation is approved in this repository until OK-Core grants implementation approval.
+No runtime implementation is approved. Governance alignment remediation complete; RFA prepared but not submitted.
 
-This repository currently contains architecture, governance, research, contracts, validation and handover documentation only.
+This repository contains architecture, governance, compliance, research, contracts, validation, review and handover documentation only.

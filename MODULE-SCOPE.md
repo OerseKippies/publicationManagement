@@ -1,6 +1,6 @@
 # pubM Module Scope
 
-Status: Architecture Foundation
+Status: Architecture Foundation Approved — Governance Alignment In Progress
 Module: publicationManagement (pubM)
 Authority: OK-Core
 

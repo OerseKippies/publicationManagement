@@ -1,6 +1,6 @@
 # ADR-0002 - Publication Domain Model
 
-Status: Accepted locally, pending OK-Core approval
+Status: Accepted — aligned with OK-Core Architecture Foundation approval (APR-2026-06-05-006)
 Date: 2026-06-04
 
 ## Decision

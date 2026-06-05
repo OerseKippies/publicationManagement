@@ -1,6 +1,6 @@
 # pubM Architecture
 
-Status: MVP v1 Architecture Foundation candidate
+Status: Architecture Foundation Approved — Governance Alignment In Progress
 Date: 2026-06-04
 Authority: OK-Core
 

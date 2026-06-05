@@ -21,11 +21,14 @@ Implementation status: MVP core approved; platform execution HYBRID extension se
 
 pubM has completed MVP v1 Architecture Foundation documentation.
 
-Final assessment:
+Final assessment (updated 2026-06-05):
 
 ```text
-Architecture Foundation Complete = PASS
-MVP Ready For Implementation = BLOCKED UNTIL OK-CORE APPROVAL
+Architecture Foundation Complete = APPROVED (APR-2026-06-05-006)
+Deployment Classification (HYBRID) = APPROVED (APR-2026-06-05-012)
+Governance Alignment (Registry v1.0.0) = IN PROGRESS
+MVP Ready For Implementation = NOT APPROVED
+Canonical API Promotion = DEFERRED (Issue #28)
 ```
 
 ## Evidence Summary
@@ -94,13 +97,16 @@ Adopted: separate publication ownership, explicit workflow states, immutable ver
 
 ## Open Blockers
 
-- OK-Core approval is required before implementation.
-- OK-Core must review the narrowed VERSIO_HOSTED pubM hosted core against the existing HYBRID candidate note for platform execution.
-- Canonical API promotion must happen through OK-Core.
+## Open Items (Post-Foundation)
+
+- Governance Alignment (Registry v1.0.0) — remediation complete; RFA prepared, not submitted.
+- MVP Ready For Implementation — not requested; requires Governance Alignment approval first.
+- Canonical API contract promotion — deferred through OK-Core Issue #28 (accepted risk).
+- Platform execution HYBRID runtime — future implementation scope per ADR-0026; core VERSIO_HOSTED approved.
 
 ## Handover Conclusion
 
-pubM is ready for OK-Core Architecture Foundation review.
+pubM Architecture Foundation is OK-Core APPROVED. Governance alignment remediation artifacts are prepared for submission.
 
 Recommended OK-Core decision:
 

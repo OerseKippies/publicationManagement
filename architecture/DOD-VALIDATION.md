@@ -1,21 +1,41 @@
 # pubM Definition of Done Validation
 
-Status: PASS WITH IMPLEMENTATION BLOCKER
-Date: 2026-06-04
+Status: Governance Alignment In Progress
+Date: 2026-06-05 (updated)
+
+---
+
+## Approval State
+
+| Milestone | Status | Evidence |
+|---|---|---|
+| Architecture Foundation | **APPROVED** | OK-Core APR-2026-06-05-006 |
+| Deployment Classification (HYBRID) | **APPROVED** | OK-Core APR-2026-06-05-012 |
+| Governance Alignment (Registry v1.0.0) | **IN PROGRESS** | compliance/, approval-request/RFA-GOVERNANCE-ALIGNMENT.md |
+| MVP Ready For Implementation | **NOT APPROVED** | No OK-Core record |
+| Canonical API Promotion | **DEFERRED** | OK-Core Issue #28 / EGA-F001 |
+
+---
+
+## DoD Sections
 
 | DoD Section | Result | Evidence | Notes |
 |---|---|---|---|
-| Architecture Foundation | PASS | `ARCHITECTURE.md`, `architecture/MODULE-INVENTORY.md` | Foundation docs complete |
-| Governance | PASS | `governance/README.md`, `ADRs/` | OK-Core authority preserved |
-| Security | PASS | `architecture/SECURITY-MODEL.md` | Authentication/authorization assumptions documented |
-| Audit | PASS | `architecture/AUDIT-MODEL.md` | Immutable audit model documented |
-| Research | PASS | `research/RESEARCH-REGISTER.md` | Required topics covered |
-| Versio compliance | PASS | `architecture/DEPLOYMENT.md`, ADR-0007 | No unsupported runtime dependency |
-| Communication boundary | PASS | `architecture/COMMUNICATION-BOUNDARY.md`, ADR-0008 | commL-only rule documented |
-| Database ownership | PASS | `architecture/PERSISTENCE-MODEL.md`, `schemas/MARIADB-SCHEMA-DRAFT.md` | pubM-owned schema only |
-| API governance | PASS | `contracts/`, `public/api/publication-api-draft.yaml` | API remains DRAFT_IN_MODULE |
-| Handover | PASS | `handover/OK-CORE-HANDOVER-PUBM-MVP-ARCHITECTURE-COMPLETE.md` | Approval request included |
-| Audit closure | PASS | `docs/reports/2026-06-04-ARCHITECTURE-FOUNDATION-AUDIT-CLOSURE.md` | Previous local scope findings remediated |
+| Architecture Foundation | PASS | `ARCHITECTURE.md`, `architecture/MODULE-INVENTORY.md` | OK-Core approved APR-006 |
+| Governance | PASS | `governance/`, `compliance/`, `ADRs/` | Registry v1.0.0 adopted |
+| Security | PASS | `architecture/SECURITY-MODEL.md` | Unchanged |
+| Audit | PASS | `architecture/AUDIT-MODEL.md` | Unchanged |
+| Research | PASS | `research/RESEARCH-REGISTER.md` | Unchanged |
+| Versio compliance | PASS | `architecture/DEPLOYMENT.md`, ADR-0007 | HYBRID classification approved |
+| Communication boundary | PASS | `architecture/COMMUNICATION-BOUNDARY.md`, ADR-0008 | Unchanged |
+| Database ownership | PASS | `architecture/PERSISTENCE-MODEL.md`, `schemas/MARIADB-SCHEMA-DRAFT.md` | Unchanged |
+| API governance | PASS | `contracts/`, `public/api/publication-api-draft.yaml` | DRAFT_IN_MODULE; canonical deferred |
+| Handover | PASS | `handover/OK-CORE-HANDOVER-PUBM-MVP-ARCHITECTURE-COMPLETE.md` | Foundation approved |
+| Registry compliance | PASS | `governance/REGISTRY-COMPLIANCE-MATRIX.md` | 100% REQUIRED present |
+| Reading compliance | CONDITIONAL PASS | `compliance/MANDATORY-READING-CONSUMPTION-LOG.md` | Remediation session; govM pending |
+| Audit closure | PASS | `docs/reports/2026-06-04-ARCHITECTURE-FOUNDATION-AUDIT-CLOSURE.md` | Prior local findings remediated |
+
+---
 
 ## Findings
 
@@ -28,31 +48,71 @@ Critical findings count:
 Major findings count:
 
 ```text
-1
+0
 ```
 
-Major finding:
+Open governance process items (not DoD failures):
 
 ```text
-Implementation remains blocked until OK-Core approval is granted.
+govM verification pending
+RFA not yet submitted to OK-Core
 ```
+
+---
 
 ## Open Blockers
 
-- OK-Core must approve the pubM MVP foundation before implementation.
-- OK-Core must review whether the narrowed VERSIO_HOSTED pubM core supersedes or coexists with the HYBRID candidate note for platform execution in the OK-Core deployment matrix.
-- Canonical API contract promotion must happen in OK-Core after review.
+### Governance Alignment (In Progress)
+
+- govM verification not yet performed
+- RFA-PUBM-GOV-ALIGN-001 prepared but not submitted
+
+### MVP Ready For Implementation (Not Submitted)
+
+- Requires Governance Alignment approval first
+- No MVP Ready RFA submitted
+
+### Deferred (Not Blockers)
+
+- Canonical API contract promotion — OK-Core Issue #28 (accepted risk)
+- Platform execution HYBRID runtime — future implementation scope per ADR-0026
+
+---
 
 ## Final Result
 
-Architecture Foundation Complete:
+Architecture Foundation:
 
 ```text
-PASS
+APPROVED (OK-Core APR-2026-06-05-006)
+```
+
+Deployment Classification:
+
+```text
+APPROVED (OK-Core APR-2026-06-05-012)
+```
+
+Governance Alignment:
+
+```text
+IN PROGRESS — artifacts prepared, pending submission and OK-Core approval
 ```
 
 MVP Ready For Implementation:
 
 ```text
-BLOCKED UNTIL OK-CORE APPROVAL
+NOT APPROVED
+```
+
+Canonical API Promotion:
+
+```text
+DEFERRED
+```
+
+Implementation:
+
+```text
+NOT APPROVED — no runtime implementation authorized
 ```
