@@ -4,8 +4,18 @@ Date: 2026-06-04
 Repository: OerseKippies/publicationManagement
 Module: publicationManagement
 Module code: pubM
-Status: Architecture Foundation Complete
-Implementation status: Blocked until OK-Core approval
+Status: Architecture Foundation Complete — OK-Core APPROVED
+Implementation status: MVP core approved; platform execution HYBRID extension separate
+
+## OK-Core Approval
+
+| Field | Value |
+|---|---|
+| Record ID | APR-2026-06-05-006 |
+| Decision | APPROVED |
+| Approval record | OK-Core/approvals/records/APPROVAL-2026-06-05-PUBM-ARCHITECTURE-FOUNDATION.md |
+| Deployment | OK-Core/approvals/records/APPROVAL-2026-06-05-PUBM-DEPLOYMENT-CLASSIFICATION.md (HYBRID) |
+| Deployment ADR | OK-Core/governance/Architectural-Decision-Records/ADR-0026-PUBM-HYBRID-DEPLOYMENT-CLASSIFICATION.md |
 
 ## Executive Status
 

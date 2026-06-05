@@ -1,28 +1,48 @@
 # pubM Deployment Model
 
-Status: Architecture Foundation
+Status: Accepted
 Module: publicationManagement (pubM)
-Authority: OK-Core
+Authority: OK-Core ADR-0026
 
-## Target Classification
-
-This MVP foundation is designed to be compatible with:
+## OK-Core Classification
 
 ```text
-VERSIO_HOSTED
+Classification: HYBRID (Accepted)
+Approval: APR-2026-06-05-012
+ADR: OK-Core ADR-0026-PUBM-HYBRID-DEPLOYMENT-CLASSIFICATION.md
 ```
 
-OK-Core `architecture/DEPLOYMENT-MATRIX.md` currently lists pubM as a HYBRID draft candidate because platform automation and browser/session tooling are not proven on the Versio baseline. This local foundation deliberately excludes direct marketplace integrations, browser automation, WebSockets, long-running daemons and external API gateway ownership.
+## HYBRID Scope Split
 
-Therefore this foundation requests OK-Core review of the scoped VERSIO_HOSTED pubM core:
+| Component | Runtime | Status |
+|---|---|---|
+| pubM core | VERSIO_HOSTED | Accepted — MVP foundation |
+| Platform execution | HYBRID extension | Not in MVP foundation — requires separate approval |
+
+### VERSIO_HOSTED Core (MVP Foundation)
 
 ```text
-publication lifecycle + scheduling metadata + audit + API draft
+Publication lifecycle governance
+Publication scheduling metadata
+Publication audit records
+Publication API (draft)
+MariaDB 10.6 persistence
+PHP 8.3 + Cron scheduling triggers
 ```
 
-## Proven Versio Baseline
+### HYBRID Extension (Out of MVP Foundation)
 
-Evidence is in OK-Core:
+```text
+PlatformExecution
+PlatformFormFilling
+RecorderExecution
+Browser/session automation
+External marketplace connectors
+```
+
+## Proven Versio Baseline (Core)
+
+Evidence in OK-Core:
 
 - `architecture/HOSTING-ASSESSMENT-VERSIO.md`
 - `architecture/DEPLOYMENT-STRATEGY.md`
@@ -43,22 +63,17 @@ Filesystem storage where appropriate
 Not supported as baseline:
 
 ```text
-Node.js
-npm
-Docker
-RabbitMQ
-Redis
+Node.js, npm, Docker, RabbitMQ, Redis
 Python 3 runtime dependencies
-WebSockets
-Long-running daemons
+WebSockets, long-running daemons
 ```
 
 ## Scheduling Constraint
 
-Publication schedules are represented as pubM-owned records. Execution may only be triggered by approved PHP/Cron-compatible mechanisms after OK-Core approval.
+Publication schedules are pubM-owned records. Core execution triggers use approved PHP/Cron-compatible mechanisms only.
 
-No architecture in this foundation requires a persistent worker, browser session, marketplace connector or direct external API gateway.
+Platform execution workers, if approved later, must communicate through communicationLayer.
 
 ## Local Execution
 
-Local execution is not part of this MVP foundation. If future publication execution requires browser/session automation, that worker must be separately approved and must still communicate through communicationLayer.
+Local execution is not part of this MVP foundation.

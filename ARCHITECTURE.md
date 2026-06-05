@@ -95,7 +95,9 @@ Authentication and authorization are assumed to be provided by identityManagemen
 
 ## Deployment
 
-The MVP foundation is designed for Versio-compatible hosted architecture:
+OK-Core classification: **HYBRID** (Accepted — ADR-0026, APR-2026-06-05-012)
+
+MVP foundation covers the VERSIO_HOSTED core only:
 
 ```text
 PHP 8.3
@@ -106,4 +108,6 @@ SSH
 Git deployment
 ```
 
-Runtime implementation is blocked until OK-Core approval.
+Platform execution (browser automation, recorder, marketplace connectors) is a separately approved HYBRID extension and is excluded from this foundation.
+
+See `architecture/DEPLOYMENT.md`.
