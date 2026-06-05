@@ -21,11 +21,11 @@ Governance alignment artifacts are committed and pushed to GitHub. Evidence pack
 |---|---|---|---|
 | Governance alignment package | **e4a645a** | e4a645abccfb37d71a73f798df30e9c34d279e7a | Primary artifact commit |
 | Evidence refresh | **fe08ea3** | fe08ea3fa40f32dd16155d5b88a954b588565c48 | Evidence indexes + submission status |
-| Execution report | pending push | EXECUTION-READY-REPORT.md | Commit locally; push pending maintainer approval |
+| Execution report | **f749d16** | f749d16 (full hash at push) | EXECUTION-READY-REPORT.md |
 
 **Authoritative evidence commit for artifact resolution:** `e4a645a`
 
-**Latest repository HEAD:** `fe08ea3` (branch `main`)
+**Latest repository HEAD:** `f749d16` (branch `main`)
 
 ---
 
@@ -37,6 +37,7 @@ Governance alignment artifacts are committed and pushed to GitHub. Evidence pack
 |---|---|---|---|
 | First | e1ddf13..e4a645a | main | origin (github.com/OerseKippies/publicationManagement) |
 | Second | e4a645a..fe08ea3 | main | origin |
+| Third | fe08ea3..f749d16 | main | origin |
 
 ---
 
@@ -105,10 +106,10 @@ RFA **not submitted** to OK-Core. Do not claim OK-Core approval.
 
 ```text
 1. Submit reviews/GOVM-VERIFICATION-REQUEST.md to govM
-   Evidence: OerseKippies/publicationManagement/reviews/evidence/GOVM-VERIFICATION-EVIDENCE-INDEX.md@fe08ea3
+   Evidence: OerseKippies/publicationManagement/reviews/evidence/GOVM-VERIFICATION-EVIDENCE-INDEX.md@f749d16
 
 2. Submit approval-request/RFA-GOVERNANCE-ALIGNMENT.md to OK-Core
-   Evidence: OerseKippies/publicationManagement/reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md@fe08ea3
+   Evidence: OerseKippies/publicationManagement/reviews/evidence/GOV-ALIGNMENT-EVIDENCE-PACKAGE.md@f749d16
 
 3. Send Evidence Ready trigger to OK-Core for RFA-PUBM-GOV-ALIGN-001
 
@@ -200,7 +201,7 @@ RFA **not submitted** to OK-Core. Do not claim OK-Core approval.
 
 | Criterion | Met |
 |---|---|
-| Artifacts committed | YES (e4a645a, fe08ea3) |
+| Artifacts committed | YES (e4a645a, fe08ea3, f749d16) |
 | Artifacts pushed | YES |
 | Evidence package refreshed | YES |
 | govM package ready | YES |
@@ -213,7 +214,7 @@ RFA **not submitted** to OK-Core. Do not claim OK-Core approval.
 ```text
 Repository:  OerseKippies/publicationManagement
 Branch:      main
-Evidence:    @e4a645a (artifacts) / @fe08ea3 (latest HEAD)
+Evidence:    @e4a645a (artifacts) / @f749d16 (latest HEAD)
 RFA-ID:      RFA-PUBM-GOV-ALIGN-001
 govM request: reviews/GOVM-VERIFICATION-REQUEST.md
 RFA:         approval-request/RFA-GOVERNANCE-ALIGNMENT.md
