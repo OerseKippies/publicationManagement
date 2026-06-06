@@ -2,7 +2,9 @@
 
 ## Current Phase
 
-**MVP Phase 2 — Host Verification Complete — RFA Ready**
+**Phase 2 SUBMITTED — awaiting OK-Core MVP Runtime Approval**
+
+MVP Runtime RFA: `reviews/RFA-PUBM-MVP-RUNTIME.md` @328eddd
 
 ---
 
@@ -10,13 +12,11 @@
 
 | Item | Status |
 |---|---|
-| Runtime implementation | Complete |
-| Versio MariaDB verification | PASS |
-| Full lifecycle verification | PASS |
-| Tests 6/6 | PASS |
-| Runtime evidence package | Complete |
-| F-RUNTIME-001 audit fix | CLOSED |
-| RFA prepared | RFA-PUBM-MVP-RUNTIME-001 |
+| Phase 2 runtime implementation | Complete @328eddd |
+| Host verification | PASS |
+| Submission package | Complete |
+| Module closure audit | PASS |
+| Runtime baseline | Documented |
 
 ---
 
@@ -24,10 +24,9 @@
 
 | Item | Status |
 |---|---|
-| Push commits to origin/main | Pending |
-| Submit RFA to OK-Core | Pending |
-| Versio HTTPS deploy (F-DEPLOY-001) | Recommended |
-| Phase 3 invM → pubM integration | After OK-Core approval |
+| OK-Core MVP Runtime Approval | **Required before Phase 3** |
+| Phase 3 invM → pubM integration | Blocked until OK-Core registers approval |
+| F-DEPLOY-001 Versio HTTPS | OPEN (recommended condition) |
 
 ---
 
@@ -35,5 +34,5 @@
 
 | Item | Status |
 |---|---|
-| F-DEPLOY-001 Versio HTTPS | OPEN (LOW) |
-| MVP Runtime Complete OK-Core approval | NOT APPROVED |
+| F-DEPLOY-001 | OPEN (LOW) — do not close without HTTPS evidence |
+| OK-Core registration | Pending — APPROVAL-PUBM-MVP-RUNTIME.md |

@@ -2,11 +2,9 @@
 
 Date: 2026-06-06
 Severity: LOW
-Status: **OPEN**
+Status: **OPEN** — canonical tracking at findings/F-DEPLOY-001.md
 
----
-
-## Description
+See: findings/F-DEPLOY-001.md (do not close)
 
 pubM runtime code not deployed to Versio HTTPS entrypoints. Probed URLs return 404 or DNS failure.
 

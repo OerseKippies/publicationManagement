@@ -1,6 +1,6 @@
 # pubM Definition of Done Validation
 
-Status: MVP Phase 2 Host Verification Complete
+Status: MVP Phase 2 — MVP Runtime Complete SUBMITTED (pending OK-Core)
 Date: 2026-06-06 (updated)
 
 ---
@@ -12,7 +12,8 @@ Date: 2026-06-06 (updated)
 | Architecture Foundation | **APPROVED** | OK-Core APR-2026-06-05-006 |
 | Deployment Classification (HYBRID) | **APPROVED** | OK-Core APR-2026-06-05-012 |
 | Governance Alignment | **CLOSED** | START-HERE §8 |
-| MVP Runtime Complete | **NOT APPROVED** | RFA prepared — OK-Core decision pending |
+| **MVP Runtime Complete** | **SUBMITTED** | reviews/RFA-PUBM-MVP-RUNTIME.md @328eddd |
+| Phase 2 module package | **COMPLETE** | audits/PUBM-MVP-RUNTIME-CLOSURE-AUDIT.md |
 | Canonical API Promotion | **DEFERRED** | Issue #28 |
 
 ---
@@ -36,7 +37,8 @@ Date: 2026-06-06 (updated)
 ## MVP Runtime Complete Determination
 
 ```text
-PASS WITH CONDITIONS
+QUALIFIES — APPROVED WITH CONDITIONS (module submission)
+Pending OK-Core registration (APR-2026-06-06-023 requested)
 ```
 
 | Criterion | Result |
@@ -46,10 +48,7 @@ PASS WITH CONDITIONS
 | Audit immutable and complete | PASS |
 | Scheduling cron-compatible | PASS |
 | Tests passing | PASS |
-| Runtime defects | F-RUNTIME-001 CLOSED |
-| Open conditions | F-DEPLOY-001 Versio HTTPS deploy recommended |
-
-**Not claiming OK-Core MVP Runtime Complete approval** — RFA submission prepared for OK-Core decision.
+| Open condition | F-DEPLOY-001 Versio HTTPS deploy |
 
 ---
 
@@ -59,8 +58,6 @@ Architecture Foundation: **APPROVED**
 
 Deployment Classification: **APPROVED**
 
-MVP Runtime Implementation: **VERIFIED ON VERSIO MARIADB**
+MVP Runtime Complete: **SUBMITTED — pending OK-Core**
 
-MVP Runtime Complete (OK-Core): **PENDING RFA**
-
-Implementation: **Operational** — ready for Phase 3 integration after OK-Core approval
+Phase 3: **Blocked until OK-Core registers MVP Runtime approval**

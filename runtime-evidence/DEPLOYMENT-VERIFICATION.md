@@ -18,7 +18,7 @@ Commits verified: a5b9b0d, 3abbb63 (+ host verification fixes)
 | MariaDB target | **PASS** | Host `185.175.200.60`, database `nol_module_pubm` |
 | PHP runtime | **PASS** | PHP 8.3.31 CLI |
 | Versio HTTPS HTTP deploy | **CONDITIONAL** | No live endpoint at probed URLs (404 / DNS) |
-| Git push to origin/main | **PENDING** | Commits local at verification time |
+| Git push to origin/main | **SUBMITTED** | Remediation commit pending verification |
 
 ---
 
