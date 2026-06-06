@@ -17,9 +17,9 @@ Module: publicationManagement (pubM)
 
 | Criterion | Status |
 |---|---|
-| Inbound publication from adM via commL | PASS (code) |
-| publications.list.v1 for adM read | PASS (code) |
-| Audit on adM handoff acceptance | PASS (code) |
+| Inbound publication from adM via commL | **PASS** |
+| publications.list.v1 for adM read | **PASS** |
+| Audit on adM handoff acceptance | **PASS** |
 | Module boundary — commL only cross-module | PASS |
 
 ## Negative Test
