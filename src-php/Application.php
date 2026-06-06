@@ -131,6 +131,13 @@ final class Application
             return Response::json(201, ['draft' => $draft], $request->correlationId);
         });
 
+        $router->add('POST', '/api/v1/publications', function (Request $request) use ($draftService, $actor): Response {
+            $payload = $request->body ?? [];
+            $draft = $draftService->create($payload, $actor($request), $request->correlationId);
+
+            return Response::json(201, ['draft' => $draft], $request->correlationId);
+        });
+
         $router->add('GET', '/publications/drafts/(?P<id>[0-9a-f-]{36})', function (Request $request, array $params) use ($draftService): Response {
             return Response::json(200, ['draft' => $draftService->get($params['id'])], $request->correlationId);
         });

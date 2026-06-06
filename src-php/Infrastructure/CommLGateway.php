@@ -6,7 +6,6 @@ namespace PubM\Infrastructure;
 
 /**
  * commL boundary gateway — all cross-module calls route through communicationLayer.
- * MVP: stub validation when commL is disabled; live HTTP when configured.
  */
 final class CommLGateway
 {
@@ -14,7 +13,6 @@ final class CommLGateway
     {
     }
 
-    /** @param array<string, mixed> $payload */
     public function validateMasterDataReference(string $referenceType, string $referenceId, string $correlationId): void
     {
         if (!$this->config->getBool('comml.enabled', false)) {
@@ -26,18 +24,33 @@ final class CommLGateway
         }
 
         $baseUrl = rtrim($this->config->getString('comml.base_url'), '/');
-        $url = $baseUrl . '/api/comml/route/mdM/validate-reference';
+        $routePath = ltrim($this->config->getString('comml.route_path', '/api/route.php'), '/');
+        $url = $baseUrl . '/' . $routePath;
 
         $body = json_encode([
-            'referenceType' => $referenceType,
-            'referenceId' => $referenceId,
+            'contractId' => 'mdM.masterData.validate.v1',
+            'sourceModule' => 'publicationManagement',
+            'mode' => 'forwarding',
             'correlationId' => $correlationId,
+            'request' => [
+                'method' => 'POST',
+                'body' => [
+                    'referenceType' => $referenceType,
+                    'referenceId' => $referenceId,
+                    'correlationId' => $correlationId,
+                ],
+            ],
         ], JSON_THROW_ON_ERROR);
 
         $context = stream_context_create([
             'http' => [
                 'method' => 'POST',
-                'header' => "Content-Type: application/json\r\nX-Correlation-Id: {$correlationId}\r\n",
+                'header' => implode("\r\n", [
+                    'Content-Type: application/json',
+                    'X-Correlation-Id: ' . $correlationId,
+                    'X-Actor-Type: SERVICE_ACCOUNT',
+                    'X-Actor-Id: 00000000-0000-4000-8000-000000000001',
+                ]),
                 'content' => $body,
                 'timeout' => $this->config->getInt('comml.timeout_seconds', 5),
                 'ignore_errors' => true,
@@ -50,7 +63,12 @@ final class CommLGateway
         }
 
         $decoded = json_decode($response, true);
-        if (!is_array($decoded) || ($decoded['valid'] ?? false) !== true) {
+        if (!is_array($decoded) || ($decoded['success'] ?? false) !== true) {
+            throw new \InvalidArgumentException('master data reference validation failed via commL');
+        }
+
+        $targetResponse = $decoded['data']['response'] ?? null;
+        if (!is_array($targetResponse) || ($targetResponse['valid'] ?? false) !== true) {
             throw new \InvalidArgumentException('master data reference validation failed via commL');
         }
     }

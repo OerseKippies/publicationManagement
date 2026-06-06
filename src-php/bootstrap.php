@@ -54,5 +54,9 @@ function pubm_normalize_path(Request $request, ?string $pathOverride = null): Re
         $path = '/publications';
     }
 
+    if ($path === '/api/v1/publications') {
+        $path = '/publications/drafts';
+    }
+
     return new Request($request->method, $path, $request->headers, $request->body, $request->correlationId, $request->query);
 }
