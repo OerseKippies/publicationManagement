@@ -54,7 +54,34 @@ final class PublicationAuditRepository
     /** @return list<array<string, mixed>> */
     public function findByPublication(string $publicationId, int $limit = 100): array
     {
-        return $this->findAll('Publication', $publicationId, null, $limit);
+        $publicationId = strtolower($publicationId);
+        $sql = 'SELECT auditRecordId, entityType, entityId, action, previousState, newState,
+                       actorModule, actorIdRef, correlationId, reason, detailsJson, createdAt
+                FROM publication_audit_records
+                WHERE entityId = :publicationId
+                   OR entityId IN (SELECT draftId FROM publication_drafts WHERE publicationId = :publicationIdDraft)
+                   OR entityId IN (SELECT scheduleId FROM publication_schedules WHERE publicationId = :publicationIdSchedule)
+                ORDER BY createdAt DESC
+                LIMIT :limit';
+
+        $statement = $this->database->pdo()->prepare($sql);
+        $statement->bindValue(':publicationId', $publicationId);
+        $statement->bindValue(':publicationIdDraft', $publicationId);
+        $statement->bindValue(':publicationIdSchedule', $publicationId);
+        $statement->bindValue(':limit', max(1, min($limit, 500)), \PDO::PARAM_INT);
+        $statement->execute();
+
+        return array_map(static function (array $row): array {
+            if ($row['detailsJson'] !== null) {
+                $decoded = json_decode((string) $row['detailsJson'], true);
+                $row['details'] = is_array($decoded) ? $decoded : null;
+            } else {
+                $row['details'] = null;
+            }
+            unset($row['detailsJson']);
+
+            return $row;
+        }, $statement->fetchAll());
     }
 
     /** @return list<array<string, mixed>> */

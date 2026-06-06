@@ -2,9 +2,7 @@
 
 ## Current Phase
 
-**MVP Phase 2 — Publication Lifecycle Runtime — IMPLEMENTED**
-
-Next: Host deployment + MVP Runtime Complete RFA
+**MVP Phase 2 — Host Verification Complete — RFA Ready**
 
 ---
 
@@ -12,17 +10,13 @@ Next: Host deployment + MVP Runtime Complete RFA
 
 | Item | Status |
 |---|---|
-| Architecture Foundation | OK-Core APPROVED |
-| Deployment Classification | OK-Core APPROVED |
-| Governance remediation | CLOSED |
-| Schema + migrations | Complete |
-| PHP runtime (5 services) | Complete |
-| MVP API endpoints | Complete |
-| Cron scheduling | Complete |
-| Audit trail | Complete |
-| Tests | Complete |
-| Runtime evidence | Complete |
-| Phase 2 checkpoint review | Complete |
+| Runtime implementation | Complete |
+| Versio MariaDB verification | PASS |
+| Full lifecycle verification | PASS |
+| Tests 6/6 | PASS |
+| Runtime evidence package | Complete |
+| F-RUNTIME-001 audit fix | CLOSED |
+| RFA prepared | RFA-PUBM-MVP-RUNTIME-001 |
 
 ---
 
@@ -30,16 +24,16 @@ Next: Host deployment + MVP Runtime Complete RFA
 
 | Item | Status |
 |---|---|
-| Deploy to VERSIO_HOSTED | Pending |
-| Run verify_runtime.php on MariaDB | Pending |
-| MVP Runtime Complete RFA | Pending |
-| Phase 3 invM → pubM integration | After MVP Runtime approval |
+| Push commits to origin/main | Pending |
+| Submit RFA to OK-Core | Pending |
+| Versio HTTPS deploy (F-DEPLOY-001) | Recommended |
+| Phase 3 invM → pubM integration | After OK-Core approval |
 
 ---
 
-## Deferred
+## Open
 
 | Item | Status |
 |---|---|
-| Canonical API promotion | Issue #28 |
-| HYBRID platform execution | Out of MVP Phase 2 scope |
+| F-DEPLOY-001 Versio HTTPS | OPEN (LOW) |
+| MVP Runtime Complete OK-Core approval | NOT APPROVED |

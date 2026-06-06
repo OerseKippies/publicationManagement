@@ -33,16 +33,16 @@ $failures += test('Uuid v4 format', static fn (): bool => Uuid::isValid(Uuid::v4
 $failures += test('Uuid rejects invalid', static fn (): bool => !Uuid::isValid('not-a-uuid'));
 
 $context = build_test_context();
-$failures += test('lifecycle draft to published', static fn () use ($context): bool {
+$failures += test('lifecycle draft to published', function () use ($context): bool {
     return run_lifecycle_test($context);
 });
-$failures += test('schedule cron processing', static fn () use ($context): bool {
+$failures += test('schedule cron processing', function () use ($context): bool {
     return run_schedule_test($context);
 });
-$failures += test('audit trail immutability', static fn () use ($context): bool {
+$failures += test('audit trail immutability', function () use ($context): bool {
     return run_audit_test($context);
 });
-$failures += test('persistence reload', static fn () use ($context): bool {
+$failures += test('persistence reload', function () use ($context): bool {
     return run_persistence_test($context);
 });
 
@@ -66,18 +66,31 @@ function test(string $name, callable $fn): int
 /** @return array<string, mixed> */
 function build_test_context(): array
 {
-    $config = new Config([
-        'app' => ['timezone' => 'UTC'],
-        'database' => ['driver' => 'sqlite', 'path' => ':memory:'],
-        'comml' => ['enabled' => false],
-    ]);
+    $rootDir = dirname(__DIR__);
+    $useMariaDb = !extension_loaded('pdo_sqlite');
+
+    if ($useMariaDb) {
+        $configPath = $rootDir . '/config/config.php';
+        if (!is_file($configPath)) {
+            throw new RuntimeException('config/config.php required when pdo_sqlite unavailable');
+        }
+        $config = Config::load($configPath);
+    } else {
+        $config = new Config([
+            'app' => ['timezone' => 'UTC'],
+            'database' => ['driver' => 'sqlite', 'path' => ':memory:'],
+            'comml' => ['enabled' => false],
+        ]);
+    }
 
     $database = new Database($config);
-    $schema = file_get_contents(dirname(__DIR__) . '/tests/support/sqlite_schema.sql');
-    if ($schema === false) {
-        throw new RuntimeException('unable to load sqlite schema');
+    if (!$useMariaDb) {
+        $schema = file_get_contents($rootDir . '/tests/support/sqlite_schema.sql');
+        if ($schema === false) {
+            throw new RuntimeException('unable to load sqlite schema');
+        }
+        $database->pdo()->exec($schema);
     }
-    $database->pdo()->exec($schema);
 
     $clock = new Clock();
     $auditRepository = new PublicationAuditRepository($database);

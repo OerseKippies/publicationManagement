@@ -1,6 +1,6 @@
 # pubM Definition of Done Validation
 
-Status: MVP Phase 2 Runtime Implemented
+Status: MVP Phase 2 Host Verification Complete
 Date: 2026-06-06 (updated)
 
 ---
@@ -11,9 +11,9 @@ Date: 2026-06-06 (updated)
 |---|---|---|
 | Architecture Foundation | **APPROVED** | OK-Core APR-2026-06-05-006 |
 | Deployment Classification (HYBRID) | **APPROVED** | OK-Core APR-2026-06-05-012 |
-| Governance Alignment (Registry v1.0.0) | **CLOSED** | START-HERE §8 |
-| MVP Runtime Complete | **NOT APPROVED** | Implementation complete — RFA pending |
-| Canonical API Promotion | **DEFERRED** | OK-Core Issue #28 |
+| Governance Alignment | **CLOSED** | START-HERE §8 |
+| MVP Runtime Complete | **NOT APPROVED** | RFA prepared — OK-Core decision pending |
+| Canonical API Promotion | **DEFERRED** | Issue #28 |
 
 ---
 
@@ -21,45 +21,35 @@ Date: 2026-06-06 (updated)
 
 | Requirement | Result | Evidence |
 |---|---|---|
-| Runtime implemented | **PASS** | `src-php/` — Application, 5 services |
-| Schema implemented | **PASS** | `schemas/001_publications.sql`, `scripts/migrate.php` |
-| API implemented | **PASS** | `public/api/publications/index.php`, 10 MVP endpoints |
-| Scheduling implemented | **PASS** | `ScheduleService`, `scripts/process_scheduled_publications.php` |
-| Audit implemented | **PASS** | `publication_audit_records`, all mutations logged |
-| Tests present | **PASS** | `tests/run.php` — lifecycle, schedule, audit, persistence |
-| Runtime evidence present | **PASS** | `runtime-evidence/` (5 walkthroughs) |
-| commL boundary documented | **PASS** | `contracts/runtime/COMML-BOUNDARY.md` |
-| Host verification | **PENDING** | Requires PHP 8.3 + MariaDB on VERSIO_HOSTED |
+| Runtime implemented | **PASS** | `src-php/` |
+| Schema on Versio MariaDB | **PASS** | `runtime-evidence/DATABASE-VALIDATION.md` |
+| API endpoints | **PASS** | `runtime-evidence/API-VALIDATION.md` |
+| Full lifecycle | **PASS** | `runtime-evidence/RUNTIME-LIFECYCLE-VALIDATION.md` |
+| Scheduling + cron | **PASS** | `runtime-evidence/SCHEDULING-VALIDATION.md` |
+| Audit trail | **PASS** | `runtime-evidence/AUDIT-VALIDATION.md` |
+| Tests executed | **PASS** | `runtime-evidence/TEST-EXECUTION-REPORT.md` (6/6) |
+| Host verification | **PASS** | `scripts/host_verification.php`, `host-verification-output.json` |
+| Versio HTTPS deploy | **CONDITIONAL** | F-DEPLOY-001 — CLI verified; HTTP 404 on host |
 
 ---
 
-## DoD Sections (Architecture)
+## MVP Runtime Complete Determination
 
-| DoD Section | Result | Evidence |
-|---|---|---|
-| Architecture Foundation | PASS | OK-Core APR-006 |
-| Governance | PASS | compliance/, governance/ |
-| Security | PASS | architecture/SECURITY-MODEL.md |
-| Audit | PASS | architecture/AUDIT-MODEL.md + runtime audit |
-| Versio compliance | PASS | PHP 8.3, MariaDB 10.6, cron-only scheduling |
-| Communication boundary | PASS | CommLGateway — no direct module coupling |
-| Database ownership | PASS | pubM-owned tables only |
-| Handover | PASS | Foundation handover + Phase 2 checkpoint |
+```text
+PASS WITH CONDITIONS
+```
 
----
-
-## Findings
-
-Critical: 0 | Major: 0
-
----
-
-## Open Blockers
-
-| Blocker | Notes |
+| Criterion | Result |
 |---|---|
-| Host runtime verification | Deploy + run verify_runtime.php on VERSIO_HOSTED |
-| MVP Runtime Complete RFA | Submit to OK-Core after host verification |
+| Persistence on Versio MariaDB | PASS |
+| Publication lifecycle operational | PASS |
+| Audit immutable and complete | PASS |
+| Scheduling cron-compatible | PASS |
+| Tests passing | PASS |
+| Runtime defects | F-RUNTIME-001 CLOSED |
+| Open conditions | F-DEPLOY-001 Versio HTTPS deploy recommended |
+
+**Not claiming OK-Core MVP Runtime Complete approval** — RFA submission prepared for OK-Core decision.
 
 ---
 
@@ -69,8 +59,8 @@ Architecture Foundation: **APPROVED**
 
 Deployment Classification: **APPROVED**
 
-MVP Runtime Implementation: **COMPLETE** (not yet OK-Core approved)
+MVP Runtime Implementation: **VERIFIED ON VERSIO MARIADB**
 
-MVP Runtime Complete Approval: **NOT APPROVED** — submit RFA after host verification
+MVP Runtime Complete (OK-Core): **PENDING RFA**
 
-Implementation authorization: **Runtime built per MVP Acceleration Phase 2** — OK-Core approval at MVP Runtime Complete gate only
+Implementation: **Operational** — ready for Phase 3 integration after OK-Core approval
