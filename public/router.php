@@ -11,7 +11,11 @@ if (php_sapi_name() === 'cli-server') {
 }
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
-if ($path === '/health' || str_starts_with($path, '/api/v1/publications') || str_starts_with($path, '/publications')) {
+if ($path === '/health' || $path === '/api/health.php') {
+    require __DIR__ . '/api/health.php';
+    return;
+}
+if (str_starts_with($path, '/api/v1/publications') || str_starts_with($path, '/publications')) {
     require __DIR__ . '/api/publications/index.php';
     return;
 }

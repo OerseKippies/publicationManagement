@@ -23,7 +23,7 @@ final class CommLGateway
             return;
         }
 
-        $baseUrl = rtrim($this->config->getString('comml.base_url'), '/');
+        $baseUrl = $this->outboundBaseUrl();
         $routePath = ltrim($this->config->getString('comml.route_path', '/api/route.php'), '/');
         $url = $baseUrl . '/' . $routePath;
 
@@ -71,5 +71,24 @@ final class CommLGateway
         if (!is_array($targetResponse) || ($targetResponse['valid'] ?? false) !== true) {
             throw new \InvalidArgumentException('master data reference validation failed via commL');
         }
+    }
+
+    /**
+     * Outbound commL URL. Defaults to comml.base_url; override via comml.outbound_base_url
+     * or COMML_OUTBOUND_BASE_URL (required for PHP built-in server smoke — avoids inbound deadlock).
+     */
+    private function outboundBaseUrl(): string
+    {
+        $env = getenv('COMML_OUTBOUND_BASE_URL');
+        if (is_string($env) && $env !== '') {
+            return rtrim($env, '/');
+        }
+
+        $configured = $this->config->get('comml.outbound_base_url');
+        if (is_string($configured) && $configured !== '') {
+            return rtrim($configured, '/');
+        }
+
+        return rtrim($this->config->getString('comml.base_url'), '/');
     }
 }

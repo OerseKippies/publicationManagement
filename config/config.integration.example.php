@@ -20,6 +20,8 @@ return [
     'comml' => [
         'enabled' => true,
         'base_url' => 'http://127.0.0.1:18080',
+        // PHP built-in server is single-threaded; pubM nested commL calls use a second instance.
+        'outbound_base_url' => 'http://127.0.0.1:18081',
         'route_path' => '/api/route.php',
         'timeout_seconds' => 10,
     ],
