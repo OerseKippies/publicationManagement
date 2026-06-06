@@ -45,7 +45,7 @@ final class DraftService
             throw new ApiException('VALIDATION_ERROR', 'sourceObjectId must be a valid UUID', 400);
         }
 
-        if ($sourceObjectId !== null && $sourceObjectId !== '') {
+        if ($sourceObjectId !== null && $sourceObjectId !== '' && !$this->isAdManagementSource($sourceModule)) {
             try {
                 $this->comml->validateMasterDataReference('inventoryItem', $sourceObjectId, $correlationId);
             } catch (\InvalidArgumentException $exception) {
@@ -114,13 +114,18 @@ final class DraftService
             $this->audit->log(
                 'PublicationDraft',
                 $draftId,
-                'DRAFT_CREATED',
+                isset($payload['publicationRequestId']) ? 'PUBLICATION_REQUEST_ACCEPTED' : 'DRAFT_CREATED',
                 $actor,
                 $correlationId,
                 null,
                 'DRAFT',
-                'draft created',
-                ['publicationId' => $publicationId, 'title' => $title]
+                isset($payload['publicationRequestId']) ? 'publication request accepted from adM' : 'draft created',
+                array_filter([
+                    'publicationId' => $publicationId,
+                    'title' => $title,
+                    'publicationRequestId' => isset($payload['publicationRequestId']) ? (string) $payload['publicationRequestId'] : null,
+                    'sourceModule' => $sourceModule,
+                ])
             );
 
             $this->database->commit();
@@ -130,6 +135,15 @@ final class DraftService
         }
 
         return $this->get($draftId);
+    }
+
+    private function isAdManagementSource(?string $sourceModule): bool
+    {
+        if ($sourceModule === null || $sourceModule === '') {
+            return false;
+        }
+
+        return in_array(strtolower($sourceModule), ['adm', 'admanagement', 'advertisementmanagement'], true);
     }
 
     public function get(string $draftId): array

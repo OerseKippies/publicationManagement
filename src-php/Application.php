@@ -138,6 +138,26 @@ final class Application
             return Response::json(201, ['draft' => $draft], $request->correlationId);
         });
 
+        $router->add('GET', '/api/v1/publications', function (Request $request) use ($publications): Response {
+            $sourceModule = isset($request->query['sourceModule']) ? (string) $request->query['sourceModule'] : null;
+            $sourceObjectId = isset($request->query['sourceObjectId']) ? (string) $request->query['sourceObjectId'] : null;
+            $limit = isset($request->query['limit']) ? (int) $request->query['limit'] : 100;
+
+            return Response::json(200, [
+                'publications' => $publications->list($sourceModule, $sourceObjectId, $limit),
+            ], $request->correlationId);
+        });
+
+        $router->add('GET', '/publications', function (Request $request) use ($publications): Response {
+            $sourceModule = isset($request->query['sourceModule']) ? (string) $request->query['sourceModule'] : null;
+            $sourceObjectId = isset($request->query['sourceObjectId']) ? (string) $request->query['sourceObjectId'] : null;
+            $limit = isset($request->query['limit']) ? (int) $request->query['limit'] : 100;
+
+            return Response::json(200, [
+                'publications' => $publications->list($sourceModule, $sourceObjectId, $limit),
+            ], $request->correlationId);
+        });
+
         $router->add('GET', '/publications/drafts/(?P<id>[0-9a-f-]{36})', function (Request $request, array $params) use ($draftService): Response {
             return Response::json(200, ['draft' => $draftService->get($params['id'])], $request->correlationId);
         });

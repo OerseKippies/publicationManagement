@@ -65,4 +65,28 @@ final class PublicationRepository
 
         return $row === false ? null : $row;
     }
+
+    /** @return list<array<string, mixed>> */
+    public function list(?string $sourceModule = null, ?string $sourceObjectId = null, int $limit = 100): array
+    {
+        $sql = 'SELECT publicationId, sourceModule, sourceObjectId, currentStatus, activeVersionId, createdAt, updatedAt
+                FROM publications WHERE 1=1';
+        $params = [];
+
+        if ($sourceModule !== null && $sourceModule !== '') {
+            $sql .= ' AND sourceModule = :sourceModule';
+            $params['sourceModule'] = $sourceModule;
+        }
+
+        if ($sourceObjectId !== null && $sourceObjectId !== '') {
+            $sql .= ' AND sourceObjectId = :sourceObjectId';
+            $params['sourceObjectId'] = strtolower($sourceObjectId);
+        }
+
+        $sql .= ' ORDER BY createdAt DESC LIMIT ' . max(1, min($limit, 500));
+        $statement = $this->database->pdo()->prepare($sql);
+        $statement->execute($params);
+
+        return $statement->fetchAll() ?: [];
+    }
 }
