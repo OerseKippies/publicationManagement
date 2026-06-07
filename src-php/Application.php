@@ -138,6 +138,13 @@ final class Application
             return Response::json(201, ['draft' => $draft], $request->correlationId);
         });
 
+        $router->add('POST', '/api/v1/publications/from-inventory', function (Request $request) use ($draftService, $actor): Response {
+            $payload = $request->body ?? [];
+            $draft = $draftService->createFromInventory($payload, $actor($request), $request->correlationId);
+
+            return Response::json(201, ['draft' => $draft, 'publication' => $draft['publication'] ?? null], $request->correlationId);
+        });
+
         $router->add('GET', '/api/v1/publications', function (Request $request) use ($publications): Response {
             $sourceModule = isset($request->query['sourceModule']) ? (string) $request->query['sourceModule'] : null;
             $sourceObjectId = isset($request->query['sourceObjectId']) ? (string) $request->query['sourceObjectId'] : null;

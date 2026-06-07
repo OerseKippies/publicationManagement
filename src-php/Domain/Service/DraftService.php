@@ -238,4 +238,38 @@ final class DraftService
 
         return $this->get($draftId);
     }
+
+    /** @param array<string, mixed> $payload */
+    public function createFromInventory(array $payload, ActorContext $actor, string $correlationId): array
+    {
+        $inventoryId = strtolower(trim((string) ($payload['inventoryId'] ?? $payload['inventoryItemId'] ?? '')));
+        $title = trim((string) ($payload['title'] ?? ''));
+        $description = trim((string) ($payload['description'] ?? $payload['content'] ?? ''));
+        $breed = trim((string) ($payload['breed'] ?? ''));
+
+        if ($inventoryId === '' || !Uuid::isValid($inventoryId)) {
+            throw new ApiException('VALIDATION_ERROR', 'inventoryId must be a valid UUID', 400);
+        }
+        if ($title === '') {
+            throw new ApiException('VALIDATION_ERROR', 'title is required', 400);
+        }
+        if ($description === '') {
+            throw new ApiException('VALIDATION_ERROR', 'description is required', 400);
+        }
+
+        $content = $description;
+        if ($breed !== '') {
+            $content = "Ras: {$breed}\n\n{$description}";
+        }
+
+        return $this->create([
+            'title' => $title,
+            'content' => $content,
+            'sourceModule' => 'inventoryManagement',
+            'sourceObjectId' => $inventoryId,
+            'breed' => $breed,
+            'price' => $payload['price'] ?? null,
+            'quantity' => $payload['quantity'] ?? null,
+        ], $actor, $correlationId);
+    }
 }
