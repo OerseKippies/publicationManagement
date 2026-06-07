@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-require dirname(__DIR__, 2) . '/src-php/bootstrap.php';
+header('Content-Type: application/json');
 
-pubm_bootstrap();
+$correlationId = $_SERVER['HTTP_X_CORRELATION_ID'] ?? bin2hex(random_bytes(16));
 
-use PubM\Application;
-use PubM\Http\Request;
-use PubM\Infrastructure\Correlation;
-
-$correlationId = Correlation::resolve(null);
-$request = new Request('GET', '/health', [], null, $correlationId);
-(new Application(pubm_config_path()))->handle($request)->send();
+echo json_encode([
+    'status' => 'healthy',
+    'module' => 'publicationManagement',
+    'moduleCode' => 'pubM',
+    'version' => 'v1',
+    'database' => 'not_checked',
+    'correlationId' => $correlationId,
+], JSON_THROW_ON_ERROR);
