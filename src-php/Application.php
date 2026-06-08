@@ -6,7 +6,9 @@ namespace PubM;
 
 use PubM\Audit\PublicationAuditLogger;
 use PubM\Audit\PublicationAuditRepository;
-use PubM\Domain\Service\DraftService;
+use PubM\Domain\Service\BusinessWorkspaceService;
+use PubM\Domain\Service\HealthEngineService;
+use PubM\Domain\Service\RenewalEngineService;
 use PubM\Domain\Service\PublicationAuditService;
 use PubM\Domain\Service\PublicationHistoryService;
 use PubM\Domain\Service\PublicationService;
@@ -20,6 +22,7 @@ use PubM\Infrastructure\Clock;
 use PubM\Infrastructure\CommLGateway;
 use PubM\Infrastructure\Config;
 use PubM\Infrastructure\Database;
+use PubM\Repository\BusinessRepository;
 use PubM\Repository\PublicationChannelRepository;
 use PubM\Repository\PublicationDraftRepository;
 use PubM\Repository\PublicationRepository;
@@ -114,6 +117,15 @@ final class Application
 
         $historyService = new PublicationHistoryService($publications, $drafts, $versions, $schedules, $targets);
         $auditService = new PublicationAuditService($auditRepository);
+
+        $businessRepo = new BusinessRepository($this->database);
+        $businessWorkspace = new BusinessWorkspaceService(
+            $this->database,
+            $businessRepo,
+            new HealthEngineService(),
+            new RenewalEngineService(),
+            $this->clock
+        );
 
         $router = new Router();
         $actor = static fn (Request $request): ActorContext => ActorContext::fromHeaders(
@@ -217,23 +229,101 @@ final class Application
             return Response::json(200, ['publication' => $publicationService->get($params['id'])], $request->correlationId);
         });
 
+        // Sprint business API
+        $router->add('GET', '/api/platforms', fn (Request $request): Response => Response::json(
+            200,
+            ['items' => $businessWorkspace->listPlatforms()],
+            $request->correlationId
+        ));
+        $router->add('GET', '/api/publications', fn (Request $request): Response => Response::json(
+            200,
+            ['items' => $businessWorkspace->listRegistry(is_string($_GET['advertisementReference'] ?? null) ? $_GET['advertisementReference'] : null)],
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/from-advertisement', fn (Request $request): Response => Response::json(
+            201,
+            $businessWorkspace->createFromAdvertisement($request->body ?? [], $actor($request)),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/publish', fn (Request $request, array $params): Response => Response::json(
+            200,
+            $businessWorkspace->transition($params['registryId'], 'PUBLISHED', $actor($request), 'Published'),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/archive', fn (Request $request, array $params): Response => Response::json(
+            200,
+            $businessWorkspace->transition($params['registryId'], 'ARCHIVED', $actor($request), 'Archived'),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/expire', fn (Request $request, array $params): Response => Response::json(
+            200,
+            $businessWorkspace->transition($params['registryId'], 'EXPIRED', $actor($request), 'Expired'),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/remove', fn (Request $request, array $params): Response => Response::json(
+            200,
+            $businessWorkspace->transition($params['registryId'], 'REMOVED', $actor($request), 'Removed'),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/renew', fn (Request $request, array $params): Response => Response::json(
+            201,
+            $businessWorkspace->renew($params['registryId'], $request->body ?? [], $actor($request)),
+            $request->correlationId
+        ));
+        $router->add('POST', '/api/publications/(?P<registryId>[0-9a-f-]{36})/metrics', fn (Request $request, array $params): Response => Response::json(
+            201,
+            $businessWorkspace->saveMetrics($params['registryId'], $request->body ?? [], $actor($request)),
+            $request->correlationId
+        ));
+        $router->add('GET', '/api/renewals', fn (Request $request): Response => Response::json(
+            200,
+            ['items' => $businessWorkspace->listRenewals()],
+            $request->correlationId
+        ));
+        $router->add('GET', '/api/health', fn (Request $request): Response => Response::json(
+            200,
+            ['items' => $businessWorkspace->listHealth()],
+            $request->correlationId
+        ));
+        $router->add('GET', '/api/statistics', fn (Request $request): Response => Response::json(
+            200,
+            $businessWorkspace->statisticsSummary(),
+            $request->correlationId
+        ));
+        $router->add('GET', '/api/copilot/dashboard', fn (Request $request): Response => Response::json(
+            200,
+            $businessWorkspace->copilotDashboard(),
+            $request->correlationId
+        ));
+
         return $router;
     }
 
     private function healthResponse(Request $request): Response
     {
+        $dbStatus = 'error';
+        $dbName = null;
+        $tableCount = null;
         try {
-            $this->database->pdo()->query('SELECT 1');
-            $dbStatus = 'ok';
+            $pdo = $this->database->pdo();
+            $pdo->query('SELECT 1');
+            $dbStatus = 'connected';
+            $dbName = (string) ($pdo->query('SELECT DATABASE()')->fetchColumn() ?: '');
+            $row = $pdo->query(
+                "SELECT COUNT(*) AS c FROM information_schema.tables WHERE table_schema = DATABASE()"
+            )->fetch();
+            $tableCount = (int) ($row['c'] ?? 0);
         } catch (\Throwable) {
             $dbStatus = 'error';
         }
 
         return Response::json(200, [
-            'status' => $dbStatus === 'ok' ? 'healthy' : 'degraded',
+            'status' => $dbStatus === 'connected' ? 'healthy' : 'degraded',
             'module' => 'publicationManagement',
             'moduleCode' => 'pubM',
             'database' => $dbStatus,
+            'database_name' => $dbName,
+            'table_count' => $tableCount,
             'timestamp' => $this->clock->nowIso8601(),
         ], $request->correlationId);
     }

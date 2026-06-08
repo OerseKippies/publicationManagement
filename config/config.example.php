@@ -8,7 +8,7 @@ return [
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => 3306,
-        'dbname' => 'nol_module_pubm',
+        'dbname' => 'nl_module_pubM',
         'username' => 'nol_module_pubm',
         'password' => 'CHANGE_ME',
         'charset' => 'utf8mb4',

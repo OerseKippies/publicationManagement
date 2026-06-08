@@ -3,7 +3,15 @@
 Repository: OerseKippies/publicationManagement
 Module code: pubM
 Governance authority: OK-Core
-Status: MVP Phase 2 Runtime Implemented — Host Verification Pending
+Status: **pubM Runtime MVP delivered** (2026-06-08)
+
+Database: `nl_module_pubM` | Production: https://pubm.oerse-kippies.nl/health
+
+```bash
+php scripts/migrate.php && php scripts/seed.php
+php scripts/test_pubm_mvp.php
+bash scripts/deploy_pubm_versio.sh
+```
 
 ## Purpose
 

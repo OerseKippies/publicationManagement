@@ -22,10 +22,11 @@ $database = new Database($config);
 $pdo = $database->pdo();
 
 $migrations = [
-    '001_publications' => '001_publications.sql',
+    '001_publications' => ['dir' => 'schemas', 'file' => '001_publications.sql'],
+    '004_pubM_business_schema' => ['dir' => 'migrations', 'file' => '004_pubM_business_schema.sql'],
 ];
 
-foreach ($migrations as $migrationId => $fileName) {
+foreach ($migrations as $migrationId => $meta) {
     try {
         $statement = $pdo->prepare('SELECT migrationId FROM pubm_schema_migrations WHERE migrationId = :migrationId LIMIT 1');
         $statement->execute(['migrationId' => $migrationId]);
@@ -37,10 +38,10 @@ foreach ($migrations as $migrationId => $fileName) {
         // Table may not exist yet on first migration.
     }
 
-    $path = $rootDir . '/schemas/' . $fileName;
+    $path = $rootDir . '/' . $meta['dir'] . '/' . $meta['file'];
     $sql = file_get_contents($path);
     if ($sql === false) {
-        fwrite(STDERR, "Unable to read migration SQL: {$fileName}\n");
+        fwrite(STDERR, "Unable to read migration SQL: {$meta['file']}\n");
         exit(1);
     }
 
