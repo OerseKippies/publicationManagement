@@ -7,6 +7,7 @@ namespace PubM;
 use PubM\Audit\PublicationAuditLogger;
 use PubM\Audit\PublicationAuditRepository;
 use PubM\Domain\Service\BusinessWorkspaceService;
+use PubM\Domain\Service\DraftService;
 use PubM\Domain\Service\HealthEngineService;
 use PubM\Domain\Service\RenewalEngineService;
 use PubM\Domain\Service\PublicationAuditService;
